@@ -1,0 +1,28 @@
+{
+  "name": "سوق قطر",
+  "short_name": "Sooq Qatar",
+  "description": "متجر قطر الإلكتروني - منتجات ذكية وحصرية بأسعار تنافسية",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6B1D3F",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22%3E%3Crect fill=%22%236B1D3F%22 width=%22192%22 height=%22192%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2280%22 fill=%22%23D4AF37%22 text-anchor=%22middle%22 dominant-baseline=%22central%22%3E🇶🇦%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["shopping", "ecommerce"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 540 720%22%3E%3Crect fill=%22%23f5f5f5%22 width=%22540%22 height=%22720%22/%3E%3Crect fill=%22%236B1D3F%22 width=%22540%22 height=%22100%22/%3E%3Ctext x=%2270%22 y=%2250%22 font-size=%2240%22 fill=%22white%22%3Esooq-qatar%3C/text%3E%3C/svg%3E",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ]
+}
