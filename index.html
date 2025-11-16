@@ -1,1 +1,347 @@
-<!-- Redirect -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوق قطر - تسجيل الدخول</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='50' font-size='50' text-anchor='middle' dy='.3em'>🇶🇦</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #6B1D3F 0%, #8B2E5F 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            animation: slideUp 0.6s ease;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .logo {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #6B1D3F;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .location-status {
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .location-status.qatar {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .location-status.outside {
+            background: #fff3e0;
+            color: #e65100;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+        .form-group.show {
+            display: block;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #6B1D3F;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #6B1D3F;
+            box-shadow: 0 0 0 3px rgba(107, 29, 63, 0.1);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #6B1D3F 0%, #8B2E5F 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(107, 29, 63, 0.3);
+            display: none;
+        }
+        .submit-btn.show {
+            display: block;
+        }
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(107, 29, 63, 0.4);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .auto-enter-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #2e7d32 0%, #558b2f 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            display: none;
+        }
+        .auto-enter-btn.show {
+            display: block;
+        }
+        .auto-enter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+        }
+        .error-msg {
+            background: #ffebee;
+            color: #d32f2f;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .success-msg {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            color: #6B1D3F;
+            font-weight: bold;
+        }
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(107, 29, 63, 0.3);
+            border-top: 3px solid #6B1D3F;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .info-box {
+            background: #f5f5f5;
+            border-left: 4px solid #D4AF37;
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 1.5rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">🇶🇦</div>
+        <h1 class="title">سوق قطر</h1>
+        <p class="subtitle">متجر إلكتروني حصري</p>
+
+        <div class="location-status" id="locationStatus" style="display: none;"></div>
+
+        <div class="error-msg" id="errorMsg"></div>
+        <div class="success-msg" id="successMsg"></div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group" id="passwordGroup">
+                <label for="password">🔐 كلمة المرور:</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="أدخل كلمة المرور" 
+                    required
+                    autocomplete="off"
+                >
+            </div>
+
+            <button type="button" class="auto-enter-btn" id="autoEnterBtn" onclick="autoEnterShop()">
+                <span id="autoEnterText">دخول مباشر</span>
+                <span class="loading" id="autoLoading" style="display: none;">
+                    <span class="spinner"></span> جاري...
+                </span>
+            </button>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span id="btnText">تحقق من كلمة المرور</span>
+                <span class="loading" id="loading" style="display: none;">
+                    <span class="spinner"></span> جاري التحقق...
+                </span>
+            </button>
+        </form>
+
+        <div class="info-box">
+            📌 <strong>معلومات:</strong> المقيمون في قطر يحصلون على دخول فوري. من خارج قطر يحتاج كلمة المرور.
+        </div>
+    </div>
+
+    <script>
+        let isInQatar = false;
+
+        async function checkGeolocation() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                return data.country_code === 'QA';
+            } catch (e) {
+                return false;
+            }
+        }
+
+        async function updateUI() {
+            isInQatar = await checkGeolocation();
+            
+            const locationStatus = document.getElementById('locationStatus');
+            const passwordGroup = document.getElementById('passwordGroup');
+            const submitBtn = document.getElementById('submitBtn');
+            const autoEnterBtn = document.getElementById('autoEnterBtn');
+
+            locationStatus.style.display = 'block';
+
+            if (isInQatar) {
+                locationStatus.className = 'location-status qatar';
+                locationStatus.textContent = '✅ مرحباً! أنت في قطر - دخول فوري مسموح';
+                passwordGroup.classList.remove('show');
+                submitBtn.classList.remove('show');
+                autoEnterBtn.classList.add('show');
+            } else {
+                locationStatus.className = 'location-status outside';
+                locationStatus.textContent = '⚠️ أنت خارج قطر - كلمة المرور مطلوبة';
+                passwordGroup.classList.add('show');
+                submitBtn.classList.add('show');
+                autoEnterBtn.classList.remove('show');
+                document.getElementById('password').focus();
+            }
+        }
+
+        async function autoEnterShop() {
+            const autoEnterText = document.getElementById('autoEnterText');
+            const autoLoading = document.getElementById('autoLoading');
+            const autoEnterBtn = document.getElementById('autoEnterBtn');
+
+            autoEnterBtn.disabled = true;
+            autoEnterText.style.display = 'none';
+            autoLoading.style.display = 'block';
+
+            setTimeout(() => {
+                localStorage.setItem('sooq-qatar-auth', 'true');
+                localStorage.setItem('auth-time', new Date().getTime());
+                window.location.href = 'shop.html';
+            }, 1000);
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+            const btnText = document.getElementById('btnText');
+            const loading = document.getElementById('loading');
+            const submitBtn = document.getElementById('submitBtn');
+
+            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            loading.style.display = 'block';
+
+            setTimeout(() => {
+                if (password === '123456') {
+                    successMsg.textContent = '✅ تم التحقق بنجاح! جاري فتح المتجر...';
+                    successMsg.style.display = 'block';
+
+                    localStorage.setItem('sooq-qatar-auth', 'true');
+                    localStorage.setItem('auth-time', new Date().getTime());
+
+                    setTimeout(() => {
+                        window.location.href = 'shop.html';
+                    }, 1500);
+                } else {
+                    errorMsg.textContent = '❌ كلمة المرور غير صحيحة. حاول مرة أخرى.';
+                    errorMsg.style.display = 'block';
+                    document.getElementById('password').value = '';
+                    document.getElementById('password').focus();
+
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'inline';
+                    loading.style.display = 'none';
+                }
+            }, 1000);
+        }
+
+        window.addEventListener('load', () => {
+            updateUI();
+
+            const auth = localStorage.getItem('sooq-qatar-auth');
+            const authTime = localStorage.getItem('auth-time');
+
+            if (auth && authTime) {
+                const now = new Date().getTime();
+                const diff = (now - parseInt(authTime)) / (1000 * 60 * 60);
+
+                if (diff < 24) {
+                    window.location.href = 'shop.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
