@@ -4,49 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سجادة صلاة تعليمية | سوق قطر</title>
-    <meta name="description" content="سجادة صلاة تعليمية مع علامات تساعد على تعليم الصلاة - السعر: 277.7 QAR. منتج أصلي بضمان من سوق قطر.">
-    <meta name="keywords" content="سجادة صلاة تعليمية, سوق قطر, تسوق أونلاين, A.001501">
-    <meta name="author" content="سوق قطر">
-    <meta property="og:title" content="سجادة صلاة تعليمية">
-    <meta property="og:description" content="سجادة صلاة تعليمية مع علامات تساعد على تعليم الصلاة">
-    <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatnBu8BG9z.png?alt=media&token=55609873-7836-43d5-83c4-c3e04820f677">
-    <meta property="og:price:amount" content="277.7">
-    <meta property="og:price:currency" content="QAR">
-    <meta property="og:type" content="product">
-    <link rel="canonical" href="https://sooq-qatar.arabsad.com/products-pages/سجادة-صلاة-تعليمية.html">
-    <link rel="alternate" hreflang="ar" href="https://sooq-qatar.arabsad.com/products-pages/سجادة-صلاة-تعليمية.html">
+    <meta name="description" content="سجادة صلاة تعليمية - السعر: 277.7 QAR. منتج أصلي بضمان من سوق قطر.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='90' text-anchor='middle'>🇶🇦</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --qatar-maroon: #6B1D3F;
-            --qatar-gold: #D4AF37;
-            --qatar-dark: #1a1a1a;
-            --qatar-light: #f5f5f5;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--qatar-light);
-            line-height: 1.6;
-        }
-        header {
-            background: linear-gradient(135deg, var(--qatar-maroon) 0%, #8B2E5F 100%);
+        :root { --qatar-maroon: #6B1D3F; --qatar-gold: #D4AF37; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; line-height: 1.6; }
+
+        /* HEADER */
+        header#main-header {
+            background: linear-gradient(135deg, #6B1D3F 0%, #8B2E5F 100%);
             color: white;
             padding: 1.2rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        header h1 { font-size: 1.3rem; font-weight: 700; }
-        header a { color: white; text-decoration: none; display: inline-block; margin-top: 0.8rem; transition: all 0.3s; }
-        header a:hover { opacity: 0.8; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        header#main-header h1 { font-size: 1.4rem; font-weight: 900; }
+        header#main-header h1 a { color: white; text-decoration: none; }
+        .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; padding: 0.5rem 0.8rem; border-radius: 5px; }
+        .nav-links a:hover { background: rgba(255,255,255,0.2); }
+
+        /* CONTENT */
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
         .breadcrumb { margin-bottom: 2rem; font-size: 0.9rem; color: #666; }
-        .breadcrumb a { color: var(--qatar-maroon); text-decoration: none; transition: all 0.3s; }
-        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb a { color: #6B1D3F; text-decoration: none; }
         .product-hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -57,156 +50,78 @@
             margin-bottom: 2rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
-        .product-image-container {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--qatar-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .product-image { width: 100%; height: auto; object-fit: contain; padding: 1rem; }
-        .badge-discount {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A52 100%);
-            color: white;
-            padding: 0.8rem 1.2rem;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-        }
-        .product-details h1 {
-            color: var(--qatar-maroon);
-            margin-bottom: 1rem;
-            font-size: 2rem;
-            line-height: 1.4;
-            font-weight: 900;
-        }
-        .sku-badge {
-            display: inline-block;
-            background: var(--qatar-gold);
-            color: var(--qatar-dark);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-        }
-        .rating {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        .stars { color: #FFD700; font-size: 1.2rem; }
+        .product-image { width: 100%; height: auto; object-fit: contain; padding: 1rem; background: #f5f5f5; border-radius: 12px; }
+        .product-details h1 { color: #6B1D3F; margin-bottom: 1rem; font-size: 2rem; }
+        .sku { display: inline-block; background: #D4AF37; color: #000; padding: 0.5rem 1rem; border-radius: 50px; font-weight: bold; margin-bottom: 1.5rem; font-size: 0.85rem; }
         .price-section {
-            background: linear-gradient(135deg, var(--qatar-light) 0%, #e8e8e8 100%);
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
             padding: 2rem;
             border-radius: 12px;
             margin-bottom: 2rem;
-            border-left: 4px solid var(--qatar-gold);
+            border-left: 4px solid #D4AF37;
         }
-        .original-price { font-size: 1rem; color: #999; text-decoration: line-through; display: block; margin-bottom: 0.5rem; }
-        .sale-price { font-size: 2.5rem; color: var(--qatar-maroon); font-weight: 900; display: block; margin-bottom: 0.5rem; }
-        .savings { color: #4CAF50; font-weight: bold; font-size: 1rem; }
-        .qty-section {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        .qty-section input {
-            width: 80px;
-            padding: 0.8rem;
-            border: 2px solid var(--qatar-gold);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-        .qty-section input:focus { outline: none; border-color: var(--qatar-maroon); box-shadow: 0 0 0 3px rgba(107, 29, 63, 0.1); }
-        .btn-group { display: flex; gap: 1rem; flex-direction: column; }
-        .btn-add-cart, .btn-whatsapp {
-            padding: 1.2rem 2rem;
+        .original-price { font-size: 1rem; color: #999; text-decoration: line-through; margin-bottom: 0.5rem; }
+        .sale-price { font-size: 2.5rem; color: #6B1D3F; font-weight: 900; }
+        .savings { color: #4CAF50; font-weight: bold; margin-top: 0.5rem; }
+        .buttons { display: flex; gap: 1rem; margin-top: 2rem; }
+        .btn {
+            flex: 1;
+            padding: 1.2rem;
             border: none;
             border-radius: 10px;
-            cursor: pointer;
-            font-size: 1.1rem;
             font-weight: bold;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
             text-decoration: none;
             text-align: center;
             display: block;
-        }
-        .btn-add-cart {
-            background: linear-gradient(135deg, var(--qatar-maroon) 0%, #8B2E5F 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(107, 29, 63, 0.3);
-        }
-        .btn-add-cart:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(107, 29, 63, 0.4); }
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366 0%, #1FA855 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-        .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
-        .specs {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-        .specs h3 { color: var(--qatar-maroon); margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; }
-        .spec-list { list-style: none; }
-        .spec-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-        .spec-list li::before { content: "✓"; color: var(--qatar-gold); font-weight: bold; font-size: 1.3rem; }
-        .reviews {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-        .reviews h3 { color: var(--qatar-maroon); margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; }
-        .review {
-            padding: 1.5rem;
-            border-left: 4px solid var(--qatar-gold);
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #f9f9f9 0%, #f5f5f5 100%);
-            border-radius: 8px;
             transition: all 0.3s;
+            font-size: 1rem;
         }
-        .review:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateX(4px); }
-        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
-        footer {
-            background: var(--qatar-maroon);
+        .btn-cart { background: linear-gradient(135deg, #6B1D3F 0%, #8B2E5F 100%); color: white; }
+        .btn-cart:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(107,29,63,0.3); }
+        .btn-whatsapp { background: linear-gradient(135deg, #25D366 0%, #1FA855 100%); color: white; }
+        .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
+
+        /* FOOTER */
+        footer#main-footer {
+            background: linear-gradient(135deg, #6B1D3F 0%, #5a1530 100%);
             color: white;
-            text-align: center;
-            padding: 2rem;
             margin-top: 3rem;
-            border-top: 3px solid var(--qatar-gold);
+            padding: 3rem 1rem 1rem;
+            border-top: 3px solid #D4AF37;
         }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section h4 { color: #D4AF37; margin-bottom: 1rem; font-weight: 900; }
+        .footer-section a { color: rgba(255,255,255,0.85); text-decoration: none; }
+        .footer-section a:hover { color: #D4AF37; }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
+
         @media (max-width: 768px) {
-            .product-hero { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; }
-            .product-details h1 { font-size: 1.4rem; }
-            .sale-price { font-size: 1.8rem; }
-            .btn-group { flex-direction: column; }
+            .product-hero { grid-template-columns: 1fr; gap: 1.5rem; }
+            .buttons { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🇶🇦 سوق قطر</h1>
-        <a href="/">← العودة للرئيسية</a>
+    <header id="main-header">
+        <div class="header-container">
+            <h1><a href="/">🇶🇦 سوق قطر</a></h1>
+            <nav class="nav-links">
+                <a href="/">الرئيسية</a>
+                <a href="/about.html">عن المتجر</a>
+                <a href="/privacy.html">الخصوصية</a>
+                <a href="/terms.html">الشروط</a>
+                <a href="/return.html">الاسترجاع</a>
+                <a href="/shipping.html">التوصيل</a>
+            </nav>
+        </div>
     </header>
 
     <div class="container">
@@ -215,93 +130,58 @@
         </div>
 
         <div class="product-hero">
-            <div class="product-image-container">
+            <div>
                 <img src="https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatnBu8BG9z.png?alt=media&token=55609873-7836-43d5-83c4-c3e04820f677" alt="سجادة صلاة تعليمية" class="product-image" loading="lazy">
-                <div class="badge-discount">-15%</div>
             </div>
 
             <div class="product-details">
                 <h1>سجادة صلاة تعليمية</h1>
-                <div class="sku-badge">🔖 SKU: A.001501</div>
-
-                <div class="rating">
-                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                    <span>(4.8 من 5)</span>
-                </div>
-
+                <div class="sku">SKU: A.001501</div>
+                
                 <div class="price-section">
                     <div class="original-price">السعر الأصلي: 327.7 QAR</div>
                     <div class="sale-price">277.7 QAR</div>
-                    <div class="savings">توفير: 50.00 QAR</div>
+                    <div class="savings">📉 توفير: 50.00 QAR (-15%)</div>
                 </div>
 
-                <div class="qty-section">
-                    <label for="qty">الكمية:</label>
-                    <input type="number" id="qty" value="1" min="1" max="100">
-                </div>
-
-                <div class="btn-group">
-                    <button class="btn-add-cart" onclick="addToCart(9, 'سجادة صلاة تعليمية', 277.7)">
-                        🛒 أضف إلى السلة
-                    </button>
-                    <a href="https://wa.me/201110760081?text=%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D9%80%3A%20%D8%B3%D8%AC%D8%A7%D8%AF%D8%A9%20%D8%B5%D9%84%D8%A7%D8%A9%20%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9%0A%D8%A7%D9%84%D8%B3%D8%B9%D8%B1%3A%20277.7%20QAR%0ASKU%3A%20A.001501" target="_blank" class="btn-whatsapp">
-                        📱 اطلب عبر واتساب
-                    </a>
+                <div class="buttons">
+                    <button class="btn btn-cart">🛒 أضف إلى السلة</button>
+                    <a href="https://wa.me/201110760081?text=%D8%A3%D9%86%D8%A7%20%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D9%80%3A%20%D8%B3%D8%AC%D8%A7%D8%AF%D8%A9%20%D8%B5%D9%84%D8%A7%D8%A9%20%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9%0A%D8%A7%D9%84%D8%B3%D8%B9%D8%B1%3A%20277.7%20QAR%0ASKU%3A%20A.001501" target="_blank" class="btn btn-whatsapp">📱 واتساب</a>
                 </div>
             </div>
-        </div>
-
-        <div class="specs">
-            <h3>📋 المميزات</h3>
-            <ul class="spec-list">
-                <li>منتج أصلي وموثوق 100%</li>
-                <li>جودة عالية وفقاً لمعايير السوق العالمية</li>
-                <li>توصيل سريع وآمن</li>
-                <li>ضمان رضا العميل 100%</li>
-                <li>دعم عملاء متميز 24/7</li>
-                <li>سياسة استرجاع سهلة وميسرة</li>
-            </ul>
-        </div>
-
-        <div class="reviews">
-            <h3>⭐ تقييمات العملاء</h3>
-            
-        <div class="review">
-            <div class="review-header">
-                <strong>محمد الخليفي</strong>
-                <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p>منتج ممتاز وجودة عالية جداً، التوصيل سريع وآمن! 🌟</p>
-        </div>
-        <div class="review">
-            <div class="review-header">
-                <strong>فاطمة القحطاني</strong>
-                <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p>اشتريت عدة منتجات وكلها رائعة، السعر مناسب جداً 💫</p>
-        </div>
-        <div class="review">
-            <div class="review-header">
-                <strong>علي الدوسري</strong>
-                <span class="stars">⭐⭐⭐⭐</span>
-            </div>
-            <p>المنتج جيد لكن أتمنى توفير المزيد من الخيارات 👍</p>
-        </div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 سوق قطر - جميع الحقوق محفوظة</p>
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>عن سوق قطر</h4>
+                <p>متجر إلكتروني حصري للعملاء في قطر متخصص في المنتجات الذكية.</p>
+            </div>
+            <div class="footer-section">
+                <h4>الروابط السريعة</h4>
+                <ul style="list-style: none;">
+                    <li><a href="/">الرئيسية</a></li>
+                    <li><a href="/about.html">عن المتجر</a></li>
+                    <li><a href="/privacy.html">الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>التواصل</h4>
+                <p>📧 sherow1982@gmail.com</p>
+                <p>📱 +201110760081</p>
+            </div>
+            <div class="footer-section">
+                <h4>السياسات</h4>
+                <ul style="list-style: none;">
+                    <li><a href="/return.html">الاسترجاع</a></li>
+                    <li><a href="/shipping.html">التوصيل</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 سوق قطر</p>
+        </div>
     </footer>
-
-    <script>
-        function addToCart(id, title, price) {
-            const qty = parseInt(document.getElementById('qty').value) || 1;
-            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-            cart.push({id, title, price, qty});
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`تم إضافة ${qty} من "${title}" إلى السلة!`);
-        }
-    </script>
 </body>
 </html>
