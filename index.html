@@ -13,16 +13,29 @@
             --qatar-dark: #1a1a1a;
             --qatar-light: #f5f5f5;
         }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Segoe UI', sans-serif;
+            background: var(--qatar-light);
+            color: var(--qatar-dark);
+        }
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(135deg, #6B1D3F 0%, #8B2E5F 100%);
-            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 9999;
             padding: 1rem;
         }
-        .container {
+        .login-screen.hidden {
+            display: none;
+        }
+        .login-box {
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -48,10 +61,6 @@
             border-radius: 8px;
             margin-bottom: 2rem;
             font-weight: 600;
-        }
-        .status.loading {
-            background: #e3f2fd;
-            color: #1565c0;
         }
         .status.qatar {
             background: #e8f5e9;
@@ -142,44 +151,176 @@
             color: #2e7d32;
             display: block;
         }
-        .spinner {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-top: 2px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+
+        /* المتجر */
+        header {
+            background: linear-gradient(135deg, var(--qatar-maroon) 0%, #8B2E5F 100%);
+            color: white;
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        header h1 {
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+        }
+        .shop-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .shop-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--qatar-maroon);
+            margin-bottom: 2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(107, 29, 63, 0.15);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .card-sku {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        .card-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--qatar-maroon);
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+        .price-original {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 0.9rem;
+        }
+        .price {
+            font-size: 1.4rem;
+            color: var(--qatar-maroon);
+            font-weight: bold;
+            margin: 0.8rem 0;
+        }
+        .discount {
+            background: #FF6B6B;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+        .btn-product {
+            background: var(--qatar-maroon);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        .btn-product:hover {
+            background: #8B2E5F;
+        }
+        footer {
+            background: var(--qatar-maroon);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">🇶🇦</div>
-        <h1 class="title">سوق قطر</h1>
-        
-        <div class="status loading" id="status">جاري التحقق...</div>
-        <div class="message error" id="errorMsg"></div>
-        <div class="message success" id="successMsg"></div>
-
-        <form onsubmit="handleSubmit(event)">
-            <button type="button" class="btn btn-enter show" id="enterBtn" onclick="enterShop()">
-                ✅ دخول مباشر
-            </button>
+    <!-- شاشة الدخول -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <div class="logo">🇶🇦</div>
+            <h1 class="title">سوق قطر</h1>
             
-            <div class="form-group" id="passwordGroup">
-                <label>🔐 كلمة المرور:</label>
-                <input type="password" id="password" placeholder="أدخل كلمة المرور" autocomplete="off">
-            </div>
+            <div class="status" id="status"></div>
+            <div class="message error" id="errorMsg"></div>
+            <div class="message success" id="successMsg"></div>
 
-            <button type="submit" class="btn btn-submit" id="submitBtn">
-                تحقق
-            </button>
-        </form>
+            <form onsubmit="handleSubmit(event)">
+                <button type="button" class="btn btn-enter show" id="enterBtn" onclick="enterShop()">
+                    ✅ دخول مباشر
+                </button>
+                
+                <div class="form-group" id="passwordGroup">
+                    <label>🔐 كلمة المرور:</label>
+                    <input type="password" id="password" placeholder="أدخل كلمة المرور" autocomplete="off">
+                </div>
+
+                <button type="submit" class="btn btn-submit" id="submitBtn">
+                    تحقق
+                </button>
+            </form>
+        </div>
     </div>
 
+    <!-- المتجر -->
+    <header id="header" style="display: none;">
+        <h1>🇶🇦 سوق قطر - المتجر الإلكتروني</h1>
+    </header>
+
+    <div class="shop-container" id="shopContainer" style="display: none;">
+        <h2 class="shop-title">✨ المنتجات المميزة</h2>
+        <div class="grid" id="productsGrid"></div>
+    </div>
+
+    <footer id="footer" style="display: none;">
+        <p>&copy; 2025 سوق قطر - جميع الحقوق محفوظة</p>
+    </footer>
+
     <script>
+        const products = [
+            {"id": 1, "slug": "نظارة-القراءة-وحماية-العين-من-الاشعة", "sku": "A.000855", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatZbgcCNey.jpeg?alt=media&token=a8d781bb-3cab-4f30-be3f-d15adf535c0a", "title": "نظارة القراءة وحماية العين من الاشعة", "price": 249.9, "sale_price": 199.9},
+            {"id": 2, "slug": "جهاز-الحجامة-الذكي", "sku": "A.002232", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatogHffDiV.webp?alt=media&token=f3972ac6-1f02-4bff-958b-b2087d03813a", "title": "جهاز الحجامة الذكي", "price": 255, "sale_price": 205},
+            {"id": 3, "slug": "مظلة-واقية-من-الشمس-للزجاج-الأمامي-للسيارة", "sku": "A.001785", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaterkomipk.jpg?alt=media&token=bc56fcf9-6082-4942-b145-4eec4337cb0c", "title": "مظلة واقية من الشمس للزجاج الأمامي للسيارة", "price": 238, "sale_price": 188},
+            {"id": 4, "slug": "قطاعة-الخضار-اليدوية", "sku": "A.001436", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatCZ76KDh6.jpg?alt=media&token=198ae048-c196-4cb5-8b93-25951aca3f16", "title": "قطاعة الخضار اليدوية", "price": 302.2, "sale_price": 252.2},
+            {"id": 5, "slug": "جهاز-ازالة-الشعر-بتكنولوجيا-الذبذبات", "sku": "A.000356", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatpThNUiZn.jpg?alt=media&token=db63d41d-37ba-4143-a60e-729171c1340e", "title": "جهاز ازالة الشعر بتكنولوجيا الذبذبات", "price": 273.7, "sale_price": 223.7},
+            {"id": 6, "slug": "آلة-الخياطة-المحمولة", "sku": "A.000218", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatRQoHbGoD.jpg?alt=media&token=243fc879-55f7-4bef-83e7-3ac266bd5ddf", "title": "آلة الخياطة المحمولة", "price": 327.7, "sale_price": 277.7},
+            {"id": 7, "slug": "جل-تبييض-الأسنان-EELHOE", "sku": "A.003176", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatFezzopz2.jfif?alt=media&token=5a1513c8-671c-4f07-8d4e-4d897577778e", "title": "جل تبييض الأسنان EELHOE", "price": 238, "sale_price": 188},
+            {"id": 8, "slug": "جهاز-مساج-القدمين", "sku": "A.001499", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatmBgYRYpQ.jpeg?alt=media&token=57c59dc6-2588-4212-98c9-e7a5e6c97872", "title": "جهاز مساج القدمين", "price": 281.2, "sale_price": 231.2},
+            {"id": 9, "slug": "سجادة-صلاة-تعليمية", "sku": "A.001501", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatnBu8BG9z.png?alt=media&token=55609873-7836-43d5-83c4-c3e04820f677", "title": "سجادة صلاة تعليمية", "price": 327.7, "sale_price": 277.7},
+            {"id": 10, "slug": "طابعة-صور-حرارية-صغيرة-للهاتف", "sku": "A.001652", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatGVhuW2z5.jpg?alt=media&token=e77ef106-6e4d-46d0-8885-72c36b10dc74", "title": "طابعة صور حرارية صغيرة للهاتف", "price": 327.7, "sale_price": 277.7},
+            {"id": 11, "slug": "مشد-الظهر-والكتف", "sku": "A.001228", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatM43d3jZJ.jpg?alt=media&token=3f3733b2-b5b3-47e3-8110-bdc6f0b83b2b", "title": "مشد الظهر والكتف", "price": 281.9, "sale_price": 231.9},
+            {"id": 12, "slug": "مسدس-تدليك-عضلات-الجسم", "sku": "A.001982", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatdvMqD0NX.jpg?alt=media&token=eab767b4-fc42-4f33-9bd7-b61e7b1915c2", "title": "مسدس تدليك عضلات الجسم", "price": 327.7, "sale_price": 277.7},
+            {"id": 13, "slug": "مكواه-بخار-كهربائية-محمولة", "sku": "A.001851", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatLL0aifnC.jpeg?alt=media&token=fc6aa6b4-c419-4777-a12d-3fa2b1b3843b", "title": "مكواه بخار كهربائية محمولة", "price": 288.7, "sale_price": 238.7},
+            {"id": 14, "slug": "صينية-خبز-سيليكون-للمقلاة-الهوائية", "sku": "A.003334", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatQSpVTsFx.webp?alt=media&token=36a67bb3-260d-4b2c-87a0-e7a8e097aaf1", "title": "صينية خبز سيليكون للمقلاة الهوائية", "price": 272.9, "sale_price": 222.9},
+            {"id": 15, "slug": "زيت-أوميغا-لتطويل-اللحية-وتعبئة-الفراغات", "sku": "A.000185", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatTdtwUnih.jpg?alt=media&token=cf62af89-b072-4575-a9b7-a1854264da82", "title": "زيت أوميغا لتطويل اللحية وتعبئة الفراغات", "price": 263.2, "sale_price": 213.2}
+        ];
+
         let isQatar = false;
 
         async function checkLocation() {
@@ -214,16 +355,15 @@
                 document.getElementById('password').focus();
             }
 
-            // التحقق من الجلسة السابقة
             if (localStorage.getItem('auth') && (Date.now() - parseInt(localStorage.getItem('authTime'))) < 86400000) {
-                goToShop();
+                showShop();
             }
         }
 
         function enterShop() {
             localStorage.setItem('auth', 'true');
             localStorage.setItem('authTime', Date.now());
-            goToShop();
+            showShop();
         }
 
         function handleSubmit(event) {
@@ -241,7 +381,7 @@
                 setTimeout(() => {
                     localStorage.setItem('auth', 'true');
                     localStorage.setItem('authTime', Date.now());
-                    goToShop();
+                    showShop();
                 }, 1000);
             } else {
                 errorMsg.textContent = '❌ كلمة المرور خاطئة';
@@ -251,92 +391,31 @@
             }
         }
 
-        function goToShop() {
-            const products = [
-                {"id": 1, "slug": "نظارة-القراءة-وحماية-العين-من-الاشعة", "sku": "A.000855", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatZbgcCNey.jpeg?alt=media&token=a8d781bb-3cab-4f30-be3f-d15adf535c0a", "title": "نظارة القراءة وحماية العين من الاشعة", "price": 249.9, "sale_price": 199.9},
-                {"id": 2, "slug": "جهاز-الحجامة-الذكي", "sku": "A.002232", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatogHffDiV.webp?alt=media&token=f3972ac6-1f02-4bff-958b-b2087d03813a", "title": "جهاز الحجامة الذكي", "price": 255, "sale_price": 205},
-                {"id": 3, "slug": "مظلة-واقية-من-الشمس-للزجاج-الأمامي-للسيارة", "sku": "A.001785", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaterkomipk.jpg?alt=media&token=bc56fcf9-6082-4942-b145-4eec4337cb0c", "title": "مظلة واقية من الشمس للزجاج الأمامي للسيارة", "price": 238, "sale_price": 188},
-                {"id": 4, "slug": "قطاعة-الخضار-اليدوية", "sku": "A.001436", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatCZ76KDh6.jpg?alt=media&token=198ae048-c196-4cb5-8b93-25951aca3f16", "title": "قطاعة الخضار اليدوية", "price": 302.2, "sale_price": 252.2},
-                {"id": 5, "slug": "جهاز-ازالة-الشعر-بتكنولوجيا-الذبذبات", "sku": "A.000356", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatpThNUiZn.jpg?alt=media&token=db63d41d-37ba-4143-a60e-729171c1340e", "title": "جهاز ازالة الشعر بتكنولوجيا الذبذبات", "price": 273.7, "sale_price": 223.7},
-                {"id": 6, "slug": "آلة-الخياطة-المحمولة", "sku": "A.000218", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatRQoHbGoD.jpg?alt=media&token=243fc879-55f7-4bef-83e7-3ac266bd5ddf", "title": "آلة الخياطة المحمولة", "price": 327.7, "sale_price": 277.7},
-                {"id": 7, "slug": "جل-تبييض-الأسنان-EELHOE", "sku": "A.003176", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatFezzopz2.jfif?alt=media&token=5a1513c8-671c-4f07-8d4e-4d897577778e", "title": "جل تبييض الأسنان EELHOE", "price": 238, "sale_price": 188},
-                {"id": 8, "slug": "جهاز-مساج-القدمين", "sku": "A.001499", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatmBgYRYpQ.jpeg?alt=media&token=57c59dc6-2588-4212-98c9-e7a5e6c97872", "title": "جهاز مساج القدمين", "price": 281.2, "sale_price": 231.2},
-                {"id": 9, "slug": "سجادة-صلاة-تعليمية", "sku": "A.001501", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatnBu8BG9z.png?alt=media&token=55609873-7836-43d5-83c4-c3e04820f677", "title": "سجادة صلاة تعليمية", "price": 327.7, "sale_price": 277.7},
-                {"id": 10, "slug": "طابعة-صور-حرارية-صغيرة-للهاتف", "sku": "A.001652", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatGVhuW2z5.jpg?alt=media&token=e77ef106-6e4d-46d0-8885-72c36b10dc74", "title": "طابعة صور حرارية صغيرة للهاتف", "price": 327.7, "sale_price": 277.7},
-                {"id": 11, "slug": "مشد-الظهر-والكتف", "sku": "A.001228", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatM43d3jZJ.jpg?alt=media&token=3f3733b2-b5b3-47e3-8110-bdc6f0b83b2b", "title": "مشد الظهر والكتف", "price": 281.9, "sale_price": 231.9},
-                {"id": 12, "slug": "مسدس-تدليك-عضلات-الجسم", "sku": "A.001982", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatdvMqD0NX.jpg?alt=media&token=eab767b4-fc42-4f33-9bd7-b61e7b1915c2", "title": "مسدس تدليك عضلات الجسم", "price": 327.7, "sale_price": 277.7},
-                {"id": 13, "slug": "مكواه-بخار-كهربائية-محمولة", "sku": "A.001851", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatLL0aifnC.jpeg?alt=media&token=fc6aa6b4-c419-4777-a12d-3fa2b1b3843b", "title": "مكواه بخار كهربائية محمولة", "price": 288.7, "sale_price": 238.7},
-                {"id": 14, "slug": "صينية-خبز-سيليكون-للمقلاة-الهوائية", "sku": "A.003334", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatQSpVTsFx.webp?alt=media&token=36a67bb3-260d-4b2c-87a0-e7a8e097aaf1", "title": "صينية خبز سيليكون للمقلاة الهوائية", "price": 272.9, "sale_price": 222.9},
-                {"id": 15, "slug": "زيت-أوميغا-لتطويل-اللحية-وتعبئة-الفراغات", "sku": "A.000185", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatTdtwUnih.jpg?alt=media&token=cf62af89-b072-4575-a9b7-a1854264da82", "title": "زيت أوميغا لتطويل اللحية وتعبئة الفراغات", "price": 263.2, "sale_price": 213.2}
-            ];
+        function showShop() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('header').style.display = 'block';
+            document.getElementById('shopContainer').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
 
-            let html = `<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سوق قطر - المتجر</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --qatar-maroon: #6B1D3F; --qatar-gold: #D4AF37; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; }
-        header { background: linear-gradient(135deg, var(--qatar-maroon) 0%, #8B2E5F 100%); color: white; padding: 1.5rem; text-align: center; }
-        header h1 { font-size: 1.5rem; }
-        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; }
-        .card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 200px; object-fit: cover; }
-        .card-body { padding: 1.5rem; }
-        .card-title { font-weight: bold; margin-bottom: 0.5rem; color: var(--qatar-maroon); }
-        .price { font-size: 1.4rem; color: var(--qatar-maroon); font-weight: bold; margin: 1rem 0; }
-        .btn { background: var(--qatar-maroon); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; }
-        .btn:hover { background: #8B2E5F; }
-        footer { background: var(--qatar-maroon); color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>🇶🇦 سوق قطر</h1>
-        <p>متجر إلكتروني حصري - المنتجات المختارة</p>
-    </header>
-    <div class="container">
-        <div class="grid">`;
-            
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
             products.forEach(p => {
                 const discount = Math.round(((p.price - p.sale_price) / p.price) * 100);
-                html += `
-            <div class="card">
-                <img src="${p.image_link}" alt="${p.title}">
-                <div class="card-body">
-                    <div style="font-size: 0.8rem; color: #999;">${p.sku}</div>
-                    <div class="card-title">${p.title}</div>
-                    <div style="color: #999; text-decoration: line-through;">${p.price} QAR</div>
-                    <div class="price">${p.sale_price} QAR <span style="background: #FF6B6B; color: white; padding: 0.3rem 0.6rem; border-radius: 3px; font-size: 0.8rem;">-${discount}%</span></div>
-                    <a href="products-pages/${p.slug}.html" class="btn" style="width: 100%; text-align: center;">شاهد المزيد</a>
-                </div>
-            </div>`;
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${p.image_link}" alt="${p.title}">
+                    <div class="card-body">
+                        <div class="card-sku">${p.sku}</div>
+                        <div class="card-title">${p.title}</div>
+                        <div><span class="price-original">${p.price} QAR</span></div>
+                        <div class="price">${p.sale_price} QAR <span class="discount">-${discount}%</span></div>
+                        <a href="products-pages/${p.slug}.html" class="btn-product">شاهد المزيد</a>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
-
-            html += `
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2025 سوق قطر - جميع الحقوق محفوظة</p>
-    </footer>
-</body>
-</html>`;
-
-            const blob = new Blob([html], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'shop.html';
-            link.click();
-
-            // فتح المتجر في نفس النافذة
-            document.open();
-            document.write(html);
-            document.close();
         }
 
         window.addEventListener('load', init);
