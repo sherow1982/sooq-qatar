@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "sku": "A.000855",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatZbgcCNey.jpeg?alt=media&token=a8d781bb-3cab-4f30-be3f-d15adf535c0a",
+    "title": "نظارة القراءة وحماية العين من الاشعة",
+    "price": 249.9,
+    "sale_price": 199.9
+  },
+  {
+    "id": 2,
+    "sku": "A.002232",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatogHffDiV.webp?alt=media&token=f3972ac6-1f02-4bff-958b-b2087d03813a",
+    "title": "جهاز الحجامة الذكي",
+    "price": 255,
+    "sale_price": 205
+  },
+  {
+    "id": 3,
+    "sku": "A.001785",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2Fashyaaterkomipk.jpg?alt=media&token=bc56fcf9-6082-4942-b145-4eec4337cb0c",
+    "title": "مظلة واقية من الشمس للزجاج الأمامي للسيارة",
+    "price": 238,
+    "sale_price": 188
+  },
+  {
+    "id": 4,
+    "sku": "A.001436",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatCZ76KDh6.jpg?alt=media&token=198ae048-c196-4cb5-8b93-25951aca3f16",
+    "title": "قطاعة الخضار اليدوية",
+    "price": 302.2,
+    "sale_price": 252.2
+  },
+  {
+    "id": 5,
+    "sku": "A.000356",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatpThNUiZn.jpg?alt=media&token=db63d41d-37ba-4143-a60e-729171c1340e",
+    "title": "جهاز ازالة الشعر بتكنولوجيا الذبذبات",
+    "price": 273.7,
+    "sale_price": 223.7
+  },
+  {
+    "id": 6,
+    "sku": "A.000218",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatRQoHbGoD.jpg?alt=media&token=243fc879-55f7-4bef-83e7-3ac266bd5ddf",
+    "title": "آلة الخياطة المحمولة",
+    "price": 327.7,
+    "sale_price": 277.7
+  },
+  {
+    "id": 7,
+    "sku": "A.003176",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatFezzopz2.jfif?alt=media&token=5a1513c8-671c-4f07-8d4e-4d897577778e",
+    "title": "جل تبييض الأسنان EELHOE",
+    "price": 238,
+    "sale_price": 188
+  },
+  {
+    "id": 8,
+    "sku": "A.001499",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatmBgYRYpQ.jpeg?alt=media&token=57c59dc6-2588-4212-98c9-e7a5e6c97872",
+    "title": "جهاز مساج القدمين",
+    "price": 281.2,
+    "sale_price": 231.2
+  },
+  {
+    "id": 9,
+    "sku": "A.001501",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatnBu8BG9z.png?alt=media&token=55609873-7836-43d5-83c4-c3e04820f677",
+    "title": "سجادة صلاة تعليمية",
+    "price": 327.7,
+    "sale_price": 277.7
+  },
+  {
+    "id": 10,
+    "sku": "A.001652",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatGVhuW2z5.jpg?alt=media&token=e77ef106-6e4d-46d0-8885-72c36b10dc74",
+    "title": "طابعة صور حرارية صغيرة للهاتف",
+    "price": 327.7,
+    "sale_price": 277.7
+  },
+  {
+    "id": 11,
+    "sku": "A.001228",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatM43d3jZJ.jpg?alt=media&token=3f3733b2-b5b3-47e3-8110-bdc6f0b83b2b",
+    "title": "مشد الظهر والكتف",
+    "price": 281.9,
+    "sale_price": 231.9
+  },
+  {
+    "id": 12,
+    "sku": "A.001982",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatdvMqD0NX.jpg?alt=media&token=eab767b4-fc42-4f33-9bd7-b61e7b1915c2",
+    "title": "مسدس تدليك عضلات الجسم",
+    "price": 327.7,
+    "sale_price": 277.7
+  },
+  {
+    "id": 13,
+    "sku": "A.001851",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatLL0aifnC.jpeg?alt=media&token=fc6aa6b4-c419-4777-a12d-3fa2b1b3843b",
+    "title": "مكواه بخار كهربائية محمولة",
+    "price": 288.7,
+    "sale_price": 238.7
+  },
+  {
+    "id": 14,
+    "sku": "A.003334",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatQSpVTsFx.webp?alt=media&token=36a67bb3-260d-4b2c-87a0-e7a8e097aaf1",
+    "title": "صينية خبز سيليكون للمقلاة الهوائية",
+    "price": 272.9,
+    "sale_price": 222.9
+  },
+  {
+    "id": 15,
+    "sku": "A.000185",
+    "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatTdtwUnih.jpg?alt=media&token=cf62af89-b072-4575-a9b7-a1854264da82",
+    "title": "زيت أوميغا لتطويل اللحية وتعبئة الفراغات",
+    "price": 263.2,
+    "sale_price": 213.2
+  }
+]
