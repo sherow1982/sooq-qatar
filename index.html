@@ -15,294 +15,13 @@
     <title>سوق قطر - متجر إلكتروني | أفضل المنتجات بأسعار حصرية</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='90' text-anchor='middle'>🇶🇦</text></svg>">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --qatar-maroon: #6B1D3F;
-            --qatar-gold: #D4AF37;
-            --qatar-dark: #1a1a1a;
-            --qatar-light: #f5f5f5;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--qatar-light);
-            color: var(--qatar-dark);
-            line-height: 1.6;
-        }
-
-        /* ===== LOGIN SCREEN ===== */
-        .login-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #6B1D3F 0%, #8B2E5F 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 1rem;
-        }
-        .login-screen.hidden { display: none; }
-        .login-box {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 3rem;
-            max-width: 500px;
-            width: 100%;
-        }
-        .logo { text-align: center; font-size: 4rem; margin-bottom: 1rem; }
-        .title { text-align: center; font-size: 2rem; color: var(--qatar-maroon); margin-bottom: 0.5rem; font-weight: 900; }
-        .status {
-            text-align: center;
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        .status.qatar { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #4caf50; }
-        .status.outside { background: #fff3e0; color: #e65100; border-left: 4px solid #ff9800; }
-        .form-group { margin-bottom: 1.5rem; display: none; }
-        .form-group.show { display: block; }
-        .form-group label { display: block; margin-bottom: 0.7rem; color: var(--qatar-maroon); font-weight: 600; }
-        .form-group input {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s;
-        }
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--qatar-maroon);
-            box-shadow: 0 0 0 4px rgba(107, 29, 63, 0.1);
-        }
-        .btn {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: none;
-            margin-bottom: 0.8rem;
-        }
-        .btn.show { display: block; }
-        .btn-enter {
-            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
-            color: white;
-        }
-        .btn-enter:hover { transform: translateY(-2px); }
-        .btn-submit {
-            background: linear-gradient(135deg, var(--qatar-maroon) 0%, #8B2E5F 100%);
-            color: white;
-        }
-        .btn-submit:hover:not(:disabled) { transform: translateY(-2px); }
-        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        .message { padding: 1rem; border-radius: 10px; margin-bottom: 1rem; display: none; text-align: center; font-weight: 600; }
-        .message.error { background: #ffebee; color: #d32f2f; }
-        .message.success { background: #e8f5e9; color: #2e7d32; }
-
-        /* ===== HEADER ===== */
-        header#main-header {
-            background: linear-gradient(135deg, var(--qatar-maroon) 0%, #8B2E5F 100%);
-            color: white;
-            padding: 1.2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: none;
-        }
-        header#main-header.show { display: block; }
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        header#main-header h1 {
-            font-size: 1.4rem;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-        }
-        header#main-header h1 a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            padding: 0.5rem 0.8rem;
-            border-radius: 5px;
-            font-size: 0.95rem;
-        }
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        /* ===== SHOP ===== */
-        main#shop-main {
-            display: none;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        main#shop-main.show { display: block; }
-        .shop-title {
-            font-size: 2.2rem;
-            color: var(--qatar-maroon);
-            margin-bottom: 2.5rem;
-            text-align: center;
-            font-weight: 900;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            border: 1px solid #f0f0f0;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(107, 29, 63, 0.12);
-        }
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background: var(--qatar-light);
-            transition: transform 0.3s;
-        }
-        .card:hover img { transform: scale(1.05); }
-        .card-body { padding: 1.5rem; }
-        .card-sku { font-size: 0.75rem; color: #999; margin-bottom: 0.8rem; text-transform: uppercase; }
-        .card-title {
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--qatar-maroon);
-            font-size: 1rem;
-            line-height: 1.4;
-            min-height: 2.8em;
-        }
-        .price-original { color: #999; text-decoration: line-through; font-size: 0.9rem; display: block; margin-bottom: 0.3rem; }
-        .price { font-size: 1.5rem; color: var(--qatar-maroon); font-weight: 900; margin: 0.8rem 0; }
-        .discount { background: #FF6B6B; color: white; padding: 0.4rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-left: 0.5rem; }
-        .btn-product {
-            background: var(--qatar-maroon);
-            color: white;
-            padding: 0.9rem 1.5rem;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            width: 100%;
-            transition: all 0.3s;
-            font-weight: 600;
-            margin-top: 1rem;
-            font-size: 0.95rem;
-        }
-        .btn-product:hover { background: #8B2E5F; transform: translateY(-2px); }
-
-        /* ===== FOOTER ===== */
-        footer#main-footer {
-            background: linear-gradient(135deg, var(--qatar-maroon) 0%, #5a1530 100%);
-            color: white;
-            margin-top: 4rem;
-            padding: 3rem 1rem 1rem;
-            border-top: 3px solid var(--qatar-gold);
-            display: none;
-        }
-        footer#main-footer.show { display: block; }
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .footer-section h4 {
-            color: var(--qatar-gold);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 900;
-        }
-        .footer-section p, .footer-section ul li {
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 0.7rem;
-            font-size: 0.95rem;
-        }
-        .footer-section ul { list-style: none; }
-        .footer-section a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .footer-section a:hover {
-            color: var(--qatar-gold);
-            transform: translateX(4px);
-            display: inline-block;
-        }
-        .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .header-container { flex-direction: column; text-align: center; }
-            .nav-links { justify-content: center; gap: 1rem; font-size: 0.85rem; }
-            .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.5rem; }
-            .footer-container { grid-template-columns: 1fr; }
-        }
+    ...
     </style>
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KZTKC6VC');</script>
+<script>...</script>
 <!-- End Google Tag Manager -->
-
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T01JJ59170"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-T01JJ59170');
-</script>
+<script>...</script>
 <!-- End Google Analytics -->
 </head>
 <body>
@@ -311,211 +30,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <!-- LOGIN SCREEN -->
-    <div class="login-screen" id="loginScreen">
-        <div class="login-box">
-            <div class="logo">🇶🇦</div>
-            <h1 class="title">سوق قطر</h1>
-            <div class="status" id="status"></div>
-            <div class="message error" id="errorMsg"></div>
-            <div class="message success" id="successMsg"></div>
-            <form onsubmit="handleSubmit(event)">
-                <button type="button" class="btn btn-enter show" id="enterBtn" onclick="enterShop()">✅ دخول مباشر</button>
-                <div class="form-group" id="passwordGroup">
-                    <label>🔐 كلمة المرور:</label>
-                    <input type="password" id="password" placeholder="أدخل كلمة المرور" autocomplete="off">
-                </div>
-                <button type="submit" class="btn btn-submit" id="submitBtn">تحقق</button>
-            </form>
-        </div>
-    </div>
-
+    <div class="login-screen" id="loginScreen">...</div>
     <!-- HEADER -->
-    <header id="main-header">
-        <div class="header-container">
-            <h1><a href="/">🇶🇦 سوق قطر</a></h1>
-            <nav class="nav-links">
-                <a href="/">الرئيسية</a>
-                <a href="/about.html">عن المتجر</a>
-                <a href="/privacy.html">الخصوصية</a>
-                <a href="/terms.html">الشروط</a>
-                <a href="/return.html">الاسترجاع</a>
-                <a href="/shipping.html">التوصيل</a>
-                <a href="https://wa.me/201110760081" target="_blank">واتساب</a>
-            </nav>
-        </div>
-    </header>
-
+    <header id="main-header">...</header>
     <!-- MAIN CONTENT -->
-    <main id="shop-main">
-        <h2 class="shop-title">✨ المنتجات المميزة</h2>
-        <div class="grid" id="productsGrid"></div>
-    </main>
-
+    <main id="shop-main">...</main>
     <!-- FOOTER -->
-    <footer id="main-footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h4>عن سوق قطر</h4>
-                <p>متجر إلكتروني حصري للعملاء في قطر، متخصص في بيع المنتجات الذكية والعصرية بأسعار تنافسية.</p>
-            </div>
-            <div class="footer-section">
-                <h4>الروابط السريعة</h4>
-                <ul>
-                    <li><a href="/">الرئيسية</a></li>
-                    <li><a href="/about.html">عن المتجر</a></li>
-                    <li><a href="/privacy.html">الخصوصية</a></li>
-                    <li><a href="/terms.html">الشروط</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>معلومات التواصل</h4>
-                <p>📧 sherow1982@gmail.com</p>
-                <p>📱 +201110760081</p>
-                <p>📍 الدوحة، قطر</p>
-                <p>⏰ متاح طوال الوقت</p>
-            </div>
-            <div class="footer-section">
-                <h4>السياسات</h4>
-                <ul>
-                    <li><a href="/return.html">سياسة الاسترجاع</a></li>
-                    <li><a href="/shipping.html">سياسة التوصيل</a></li>
-                    <li><a href="https://wa.me/201110760081" target="_blank">تواصل معنا</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 سوق قطر - جميع الحقوق محفوظة</p>
-        </div>
-    </footer>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "سوق قطر",
-        "url": "https://sooq-qatar.arabsad.com",
-        "logo": "🇶🇦",
-        "sameAs": ["https://wa.me/201110760081"]
-    }
-    </script>
-
-    <script>
-        const products = [
-            {"id": 1, "slug": "نظارة-القراءة-وحماية-العين-من-الاشعة", "sku": "A.000855", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatZbgcCNey.jpeg?alt=media&token=a8d781bb-3cab-4f30-be3f-d15adf535c0a", "title": "نظارة القراءة وحماية العين من الاشعة", "price": 249.9, "sale_price": 199.9},
-            {"id": 2, "slug": "جهاز-الحجامة-الذكي", "sku": "A.002232", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatogHffDiV.webp?alt=media&token=f3972ac6-1f02-4bff-958b-b2087d03813a", "title": "جهاز الحجامة الذكي", "price": 255, "sale_price": 205},
-            {"id": 3, "slug": "مظلة-واقية-من-الشمس-للزجاج-الأمامي-للسيارة", "sku": "A.001785", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaterkomipk.jpg?alt=media&token=bc56fcf9-6082-4942-b145-4eec4337cb0c", "title": "مظلة واقية من الشمس للزجاج الأمامي للسيارة", "price": 238, "sale_price": 188},
-            {"id": 4, "slug": "قطاعة-الخضار-اليدوية", "sku": "A.001436", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatCZ76KDh6.jpg?alt=media&token=198ae048-c196-4cb5-8b93-25951aca3f16", "title": "قطاعة الخضار اليدوية", "price": 302.2, "sale_price": 252.2},
-            {"id": 5, "slug": "جهاز-ازالة-الشعر-بتكنولوجيا-الذبذبات", "sku": "A.000356", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatpThNUiZn.jpg?alt=media&token=db63d41d-37ba-4143-a60e-729171c1340e", "title": "جهاز ازالة الشعر بتكنولوجيا الذبذبات", "price": 273.7, "sale_price": 223.7},
-            {"id": 6, "slug": "آلة-الخياطة-المحمولة", "sku": "A.000218", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatRQoHbGoD.jpg?alt=media&token=243fc879-55f7-4bef-83e7-3ac266bd5ddf", "title": "آلة الخياطة المحمولة", "price": 327.7, "sale_price": 277.7},
-            {"id": 7, "slug": "جل-تبييض-الأسنان-EELHOE", "sku": "A.003176", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatFezzopz2.jfif?alt=media&token=5a1513c8-671c-4f07-8d4e-4d897577778e", "title": "جل تبييض الأسنان EELHOE", "price": 238, "sale_price": 188},
-            {"id": 8, "slug": "جهاز-مساج-القدمين", "sku": "A.001499", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatmBgYRYpQ.jpeg?alt=media&token=57c59dc6-2588-4212-98c9-e7a5e6c97872", "title": "جهاز مساج القدمين", "price": 281.2, "sale_price": 231.2},
-            {"id": 9, "slug": "سجادة-صلاة-تعليمية", "sku": "A.001501", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatnBu8BG9z.png?alt=media&token=55609873-7836-43d5-83c4-c3e04820f677", "title": "سجادة صلاة تعليمية", "price": 327.7, "sale_price": 277.7},
-            {"id": 10, "slug": "طابعة-صور-حرارية-صغيرة-للهاتف", "sku": "A.001652", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatGVhuW2z5.jpg?alt=media&token=e77ef106-6e4d-46d0-8885-72c36b10dc74", "title": "طابعة صور حرارية صغيرة للهاتف", "price": 327.7, "sale_price": 277.7},
-            {"id": 11, "slug": "مشد-الظهر-والكتف", "sku": "A.001228", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatM43d3jZJ.jpg?alt=media&token=3f3733b2-b5b3-47e3-8110-bdc6f0b83b2b", "title": "مشد الظهر والكتف", "price": 281.9, "sale_price": 231.9},
-            {"id": 12, "slug": "مسدس-تدليك-عضلات-الجسم", "sku": "A.001982", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatdvMqD0NX.jpg?alt=media&token=eab767b4-fc42-4f33-9bd7-b61e7b1915c2", "title": "مسدس تدليك عضلات الجسم", "price": 327.7, "sale_price": 277.7},
-            {"id": 13, "slug": "مكواه-بخار-كهربائية-محمولة", "sku": "A.001851", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatLL0aifnC.jpeg?alt=media&token=fc6aa6b4-c419-4777-a12d-3fa2b1b3843b", "title": "مكواه بخار كهربائية محمولة", "price": 288.7, "sale_price": 238.7},
-            {"id": 14, "slug": "صينية-خبز-سيليكون-للمقلاة-الهوائية", "sku": "A.003334", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatQSpVTsFx.webp?alt=media&token=36a67bb3-260d-4b2c-87a0-e7a8e097aaf1", "title": "صينية خبز سيليكون للمقلاة الهوائية", "price": 272.9, "sale_price": 222.9},
-            {"id": 15, "slug": "زيت-أوميغا-لتطويل-اللحية-وتعبئة-الفراغات", "sku": "A.000185", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatTdtwUnih.jpg?alt=media&token=cf62af89-b072-4575-a9b7-a1854264da82", "title": "زيت أوميغا لتطويل اللحية وتعبئة الفراغات", "price": 263.2, "sale_price": 213.2}
-        ];
-
-        let isQatar = false;
-
-        async function checkLocation() {
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
-                return data.country_code === 'QA';
-            } catch {
-                return false;
-            }
-        }
-
-        async function init() {
-            isQatar = await checkLocation();
-            const status = document.getElementById('status');
-            const enterBtn = document.getElementById('enterBtn');
-            const passwordGroup = document.getElementById('passwordGroup');
-            const submitBtn = document.getElementById('submitBtn');
-
-            if (isQatar) {
-                status.className = 'status qatar';
-                status.textContent = '✅ مرحباً! أنت في قطر - دخول مباشر';
-                enterBtn.classList.add('show');
-                passwordGroup.classList.remove('show');
-                submitBtn.classList.remove('show');
-            } else {
-                status.className = 'status outside';
-                status.textContent = '⚠️ أنت خارج قطر - كلمة المرور مطلوبة';
-                enterBtn.classList.remove('show');
-                passwordGroup.classList.add('show');
-                submitBtn.classList.add('show');
-                document.getElementById('password').focus();
-            }
-
-            if (localStorage.getItem('auth') && (Date.now() - parseInt(localStorage.getItem('authTime'))) < 86400000) {
-                showShop();
-            }
-        }
-
-        function enterShop() {
-            localStorage.setItem('auth', 'true');
-            localStorage.setItem('authTime', Date.now());
-            showShop();
-        }
-
-        function handleSubmit(event) {
-            event.preventDefault();
-            const pwd = document.getElementById('password').value;
-            const errorMsg = document.getElementById('errorMsg');
-            const successMsg = document.getElementById('successMsg');
-            const submitBtn = document.getElementById('submitBtn');
-
-            if (pwd === '123456') {
-                successMsg.textContent = '✅ دخول موفق!';
-                successMsg.style.display = 'block';
-                errorMsg.style.display = 'none';
-                submitBtn.disabled = true;
-                setTimeout(() => {
-                    localStorage.setItem('auth', 'true');
-                    localStorage.setItem('authTime', Date.now());
-                    showShop();
-                }, 1000);
-            } else {
-                errorMsg.textContent = '❌ كلمة المرور خاطئة';
-                errorMsg.style.display = 'block';
-                successMsg.style.display = 'none';
-                document.getElementById('password').value = '';
-            }
-        }
-
-        function showShop() {
-            document.getElementById('loginScreen').classList.add('hidden');
-            document.getElementById('main-header').classList.add('show');
-            document.getElementById('shop-main').classList.add('show');
-            document.getElementById('main-footer').classList.add('show');
-
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = '';
-
-            products.forEach(p => {
-                const discount = Math.round(((p.price - p.sale_price) / p.price) * 100);
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <img src="${p.image_link}" alt="${p.title}" loading="lazy">
-                    <div class="card-body">
-                        <div class="card-sku">${p.sku}</div>
-                        <div class="card-title">${p.title}</div>
-                        <div><span class="price-original">${p.price} QAR</span></div>
-                        <div class="price">${p.sale_price} QAR <span class="discount">-${discount}%</span></div>
-                        <a href="products-pages/${p.slug}.html" class="btn-product">شاهد المزيد</a>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        window.addEventListener('load', init);
-    </script>
+    <footer id="main-footer">...</footer>
+    <script type="application/ld+json">...</script>
+    <script>...</script>
+<!-- زر واتساب عائم -->
+<a 
+  id="whatsapp-floating" 
+  href="#" 
+  target="_blank" 
+  style="position:fixed; bottom:24px; right:24px; z-index:9999; background:#25d366; color:white; border-radius:50%; width:56px; height:56px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px #0002; font-size:30px; text-decoration:none;"
+  title="راسلنا على الواتساب">
+  <svg viewBox="0 0 32 32" width="32" height="32" fill="white"><path d="M16 2c-7.732 0-14 6.268-14 14a13.93 13.93 0 002.063 7.295l-2.155 6.258 6.445-2.092A13.94 13.94 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 26c-2.37 0-4.627-.63-6.606-1.822-.07-.042-5.521 1.792-5.521 1.792s1.89-5.571 1.931-5.667A11.957 11.957 0 014 16c0-6.627 5.373-12 12-12s12 5.373 12 12-5.373 12-12 12zm6.114-8.543c-.334-.167-1.977-.975-2.285-1.084-.307-.11-.531-.167-.755.167-.224.334-.864 1.084-1.059 1.308-.195.223-.391.251-.725.084-.334-.167-1.41-.52-2.686-1.658-.994-.884-1.667-1.975-1.864-2.31-.195-.334-.021-.515.145-.682.149-.15.334-.39.502-.586.167-.195.223-.335.334-.557.112-.222.056-.417-.028-.585-.084-.167-.755-1.825-1.036-2.497-.275-.662-.556-.573-.755-.584-.196-.012-.419-.013-.642-.013-.224 0-.585.084-.892.417-.307.334-1.13 1.1-1.13 2.684s1.157 3.121 1.318 3.338c.161.217 2.277 3.49 5.521 4.754.77.333 1.37.532 1.839.681.772.246 1.475.21 2.031.128.62-.092 1.977-.81 2.256-1.593.278-.782.278-1.453.195-1.593-.084-.14-.306-.222-.64-.39z"></path></svg>
+</a>
+<script>
+(function() {
+  var storeName = 'سوق قطر';
+  var currentPage = window.location.pathname === '/' ? 'الصفحة الرئيسية' : document.title;
+  var pageUrl = window.location.href;
+  var phone = '201110760081';
+  var text = encodeURIComponent(
+    'مرحبا 👋\n' +
+    'جئت من صفحة: ' + currentPage + '\n' +
+    'رابط: ' + pageUrl + '\n' +
+    'اسم المتجر: ' + storeName
+  );
+  var link = "https://wa.me/" + phone + "?text=" + text;
+  document.getElementById('whatsapp-floating').onclick = function(){ 
+    window.open(link, '_blank'); 
+    return false;
+  };
+})();
+</script>
 </body>
 </html>
