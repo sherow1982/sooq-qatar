@@ -1,0 +1,150 @@
+# robots.txt - سوق قطر
+# السماح بالفهرسة الكاملة لمحركات البحث الموثوقة
+
+# Google
+User-agent: Googlebot
+User-agent: Googlebot-Image
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Baidu (محرك البحث الصيني)
+User-agent: Baiduspider
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Yandex (محرك البحث الروسي)
+User-agent: YandexBot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Brave Browser Search
+User-agent: Bravecrawler
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# LinkedIN
+User-agent: LinkedInBot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Twitter/X
+User-agent: Twitterbot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Facebook
+User-agent: facebookexternalhit
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Instagram
+User-agent: Instagrambot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Pinterest
+User-agent: Pinterestbot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Apple Siri
+User-agent: Applebot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Microsoft
+User-agent: MSNBot
+User-agent: msnbot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Alexabot (Amazon)
+User-agent: Alexabot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# SemRush (SEO Tool)
+User-agent: SemrushBot
+User-agent: SemrushBot-SA
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# Ahrefs (SEO Tool)
+User-agent: AhrefsBot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# SEMrush
+User-agent: SemrushBot
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# ============================================
+# Block Bad Bots & Spam Crawlers
+# ============================================
+
+User-agent: MJ12bot
+User-agent: AltaVista
+User-agent: Wget
+User-agent: curl
+User-agent: Python
+User-agent: java
+User-agent: PHP
+User-agent: Ruby
+User-agent: Scrapy
+User-agent: Go-http-client
+Disallow: /
+
+User-agent: FUUrlFetcher
+User-agent: Speedy Spider
+User-agent: Heritrix
+User-agent: SQLMap
+User-agent: Nikto
+User-agent: Nmap
+Disallow: /
+
+# ============================================
+# Sitemap Location
+# ============================================
+
+Sitemap: https://sooq-qatar.arabsad.com/sitemap.xml
+
+# ============================================
+# Crawl Delay (Request Rate)
+# ============================================
+
+Crawl-delay: 1
+Request-rate: 30/60  # 30 requests per 60 seconds
