@@ -29,6 +29,8 @@
             color: var(--qatar-dark);
             line-height: 1.6;
         }
+
+        /* ===== LOGIN SCREEN ===== */
         .login-screen {
             position: fixed;
             top: 0;
@@ -41,9 +43,7 @@
             justify-content: center;
             z-index: 9999;
             padding: 1rem;
-            animation: fadeIn 0.3s ease;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .login-screen.hidden { display: none; }
         .login-box {
             background: white;
@@ -52,11 +52,9 @@
             padding: 3rem;
             max-width: 500px;
             width: 100%;
-            animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .logo { text-align: center; font-size: 4rem; margin-bottom: 1rem; }
-        .title { text-align: center; font-size: 2rem; color: var(--qatar-maroon); margin-bottom: 0.5rem; font-weight: 900; letter-spacing: -0.5px; }
+        .title { text-align: center; font-size: 2rem; color: var(--qatar-maroon); margin-bottom: 0.5rem; font-weight: 900; }
         .status {
             text-align: center;
             padding: 1rem;
@@ -64,22 +62,12 @@
             margin-bottom: 2rem;
             font-weight: 600;
             font-size: 0.95rem;
-            animation: fadeIn 0.5s ease;
         }
         .status.qatar { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #4caf50; }
         .status.outside { background: #fff3e0; color: #e65100; border-left: 4px solid #ff9800; }
-        .form-group {
-            margin-bottom: 1.5rem;
-            display: none;
-        }
+        .form-group { margin-bottom: 1.5rem; display: none; }
         .form-group.show { display: block; }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.7rem;
-            color: var(--qatar-maroon);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
+        .form-group label { display: block; margin-bottom: 0.7rem; color: var(--qatar-maroon); font-weight: 600; }
         .form-group input {
             width: 100%;
             padding: 0.9rem 1rem;
@@ -93,7 +81,6 @@
             outline: none;
             border-color: var(--qatar-maroon);
             box-shadow: 0 0 0 4px rgba(107, 29, 63, 0.1);
-            background: #fafafa;
         }
         .btn {
             width: 100%;
@@ -103,7 +90,7 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.3s;
             display: none;
             margin-bottom: 0.8rem;
         }
@@ -111,49 +98,82 @@
         .btn-enter {
             background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
         }
-        .btn-enter:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4); }
+        .btn-enter:hover { transform: translateY(-2px); }
         .btn-submit {
             background: linear-gradient(135deg, var(--qatar-maroon) 0%, #8B2E5F 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(107, 29, 63, 0.3);
         }
-        .btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(107, 29, 63, 0.4); }
+        .btn-submit:hover:not(:disabled) { transform: translateY(-2px); }
         .btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        .message {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            display: none;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            animation: slideDown 0.3s ease;
-        }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .message.error { background: #ffebee; color: #d32f2f; border-left: 4px solid #f44336; }
-        .message.success { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #4caf50; }
+        .message { padding: 1rem; border-radius: 10px; margin-bottom: 1rem; display: none; text-align: center; font-weight: 600; }
+        .message.error { background: #ffebee; color: #d32f2f; }
+        .message.success { background: #e8f5e9; color: #2e7d32; }
 
-        /* المتجر */
-        header {
+        /* ===== HEADER ===== */
+        header#main-header {
             background: linear-gradient(135deg, var(--qatar-maroon) 0%, #8B2E5F 100%);
             color: white;
-            padding: 1.2rem 1rem;
+            padding: 1.2rem;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
         }
-        header h1 { max-width: 1200px; margin: 0 auto; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; }
-        .shop-container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+        header#main-header.show { display: block; }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        header#main-header h1 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+        header#main-header h1 a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SHOP ===== */
+        main#shop-main {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        main#shop-main.show { display: block; }
         .shop-title {
             font-size: 2.2rem;
             color: var(--qatar-maroon);
             margin-bottom: 2.5rem;
             text-align: center;
             font-weight: 900;
-            letter-spacing: -0.5px;
         }
         .grid {
             display: grid;
@@ -166,13 +186,12 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.3s;
             border: 1px solid #f0f0f0;
         }
         .card:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 35px rgba(107, 29, 63, 0.12);
-            border-color: var(--qatar-gold);
         }
         .card img {
             width: 100%;
@@ -183,7 +202,7 @@
         }
         .card:hover img { transform: scale(1.05); }
         .card-body { padding: 1.5rem; }
-        .card-sku { font-size: 0.75rem; color: #999; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .card-sku { font-size: 0.75rem; color: #999; margin-bottom: 0.8rem; text-transform: uppercase; }
         .card-title {
             font-weight: 700;
             margin-bottom: 1rem;
@@ -192,9 +211,9 @@
             line-height: 1.4;
             min-height: 2.8em;
         }
-        .price-original { color: #999; text-decoration: line-through; font-size: 0.9rem; margin-bottom: 0.3rem; display: block; }
-        .price { font-size: 1.5rem; color: var(--qatar-maroon); font-weight: 900; margin: 0.8rem 0; display: flex; align-items: center; gap: 0.8rem; }
-        .discount { background: #FF6B6B; color: white; padding: 0.4rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
+        .price-original { color: #999; text-decoration: line-through; font-size: 0.9rem; display: block; margin-bottom: 0.3rem; }
+        .price { font-size: 1.5rem; color: var(--qatar-maroon); font-weight: 900; margin: 0.8rem 0; }
+        .discount { background: #FF6B6B; color: white; padding: 0.4rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-left: 0.5rem; }
         .btn-product {
             background: var(--qatar-maroon);
             color: white;
@@ -211,67 +230,141 @@
             margin-top: 1rem;
             font-size: 0.95rem;
         }
-        .btn-product:hover { background: #8B2E5F; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(107, 29, 63, 0.3); }
-        footer {
-            background: var(--qatar-maroon);
+        .btn-product:hover { background: #8B2E5F; transform: translateY(-2px); }
+
+        /* ===== FOOTER ===== */
+        footer#main-footer {
+            background: linear-gradient(135deg, var(--qatar-maroon) 0%, #5a1530 100%);
             color: white;
-            text-align: center;
-            padding: 2.5rem 1rem;
             margin-top: 4rem;
+            padding: 3rem 1rem 1rem;
             border-top: 3px solid var(--qatar-gold);
+            display: none;
         }
-        footer p { font-size: 0.95rem; }
+        footer#main-footer.show { display: block; }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section h4 {
+            color: var(--qatar-gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 900;
+        }
+        .footer-section p, .footer-section ul li {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+        }
+        .footer-section ul { list-style: none; }
+        .footer-section a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .footer-section a:hover {
+            color: var(--qatar-gold);
+            transform: translateX(4px);
+            display: inline-block;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
 
         @media (max-width: 768px) {
-            .login-box { padding: 2rem; }
-            .title { font-size: 1.5rem; }
-            .shop-title { font-size: 1.5rem; padding: 0 1rem; }
+            .header-container { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; gap: 1rem; font-size: 0.85rem; }
             .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.5rem; }
-            .card-body { padding: 1rem; }
-            .price { font-size: 1.2rem; }
+            .footer-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- شاشة الدخول -->
+    <!-- LOGIN SCREEN -->
     <div class="login-screen" id="loginScreen">
         <div class="login-box">
             <div class="logo">🇶🇦</div>
             <h1 class="title">سوق قطر</h1>
-            
             <div class="status" id="status"></div>
             <div class="message error" id="errorMsg"></div>
             <div class="message success" id="successMsg"></div>
-
             <form onsubmit="handleSubmit(event)">
-                <button type="button" class="btn btn-enter show" id="enterBtn" onclick="enterShop()">
-                    ✅ دخول مباشر
-                </button>
-                
+                <button type="button" class="btn btn-enter show" id="enterBtn" onclick="enterShop()">✅ دخول مباشر</button>
                 <div class="form-group" id="passwordGroup">
-                    <label for="password">🔐 كلمة المرور:</label>
+                    <label>🔐 كلمة المرور:</label>
                     <input type="password" id="password" placeholder="أدخل كلمة المرور" autocomplete="off">
                 </div>
-
-                <button type="submit" class="btn btn-submit" id="submitBtn">
-                    تحقق
-                </button>
+                <button type="submit" class="btn btn-submit" id="submitBtn">تحقق</button>
             </form>
         </div>
     </div>
 
-    <!-- المتجر -->
-    <header id="header" style="display: none;">
-        <h1>🇶🇦 سوق قطر - المتجر الإلكتروني</h1>
+    <!-- HEADER -->
+    <header id="main-header">
+        <div class="header-container">
+            <h1><a href="/">🇶🇦 سوق قطر</a></h1>
+            <nav class="nav-links">
+                <a href="/">الرئيسية</a>
+                <a href="/about.html">عن المتجر</a>
+                <a href="/privacy.html">الخصوصية</a>
+                <a href="/terms.html">الشروط</a>
+                <a href="/return.html">الاسترجاع</a>
+                <a href="/shipping.html">التوصيل</a>
+                <a href="https://wa.me/201110760081" target="_blank">واتساب</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="shop-container" id="shopContainer" style="display: none;">
+    <!-- MAIN CONTENT -->
+    <main id="shop-main">
         <h2 class="shop-title">✨ المنتجات المميزة</h2>
         <div class="grid" id="productsGrid"></div>
     </main>
 
-    <footer id="footer" style="display: none;">
-        <p>&copy; 2025 سوق قطر - جميع الحقوق محفوظة</p>
+    <!-- FOOTER -->
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>عن سوق قطر</h4>
+                <p>متجر إلكتروني حصري للعملاء في قطر، متخصص في بيع المنتجات الذكية والعصرية بأسعار تنافسية.</p>
+            </div>
+            <div class="footer-section">
+                <h4>الروابط السريعة</h4>
+                <ul>
+                    <li><a href="/">الرئيسية</a></li>
+                    <li><a href="/about.html">عن المتجر</a></li>
+                    <li><a href="/privacy.html">الخصوصية</a></li>
+                    <li><a href="/terms.html">الشروط</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>معلومات التواصل</h4>
+                <p>📧 sherow1982@gmail.com</p>
+                <p>📱 +201110760081</p>
+                <p>📍 الدوحة، قطر</p>
+                <p>⏰ متاح طوال الوقت</p>
+            </div>
+            <div class="footer-section">
+                <h4>السياسات</h4>
+                <ul>
+                    <li><a href="/return.html">سياسة الاسترجاع</a></li>
+                    <li><a href="/shipping.html">سياسة التوصيل</a></li>
+                    <li><a href="https://wa.me/201110760081" target="_blank">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 سوق قطر - جميع الحقوق محفوظة</p>
+        </div>
     </footer>
 
     <script type="application/ld+json">
@@ -281,7 +374,7 @@
         "name": "سوق قطر",
         "url": "https://sooq-qatar.arabsad.com",
         "logo": "🇶🇦",
-        "sameAs": ["https://twitter.com/sooq-qatar"]
+        "sameAs": ["https://wa.me/201110760081"]
     }
     </script>
 
@@ -376,9 +469,9 @@
 
         function showShop() {
             document.getElementById('loginScreen').classList.add('hidden');
-            document.getElementById('header').style.display = 'block';
-            document.getElementById('shopContainer').style.display = 'block';
-            document.getElementById('footer').style.display = 'block';
+            document.getElementById('main-header').classList.add('show');
+            document.getElementById('shop-main').classList.add('show');
+            document.getElementById('main-footer').classList.add('show');
 
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = '';
@@ -394,7 +487,7 @@
                         <div class="card-title">${p.title}</div>
                         <div><span class="price-original">${p.price} QAR</span></div>
                         <div class="price">${p.sale_price} QAR <span class="discount">-${discount}%</span></div>
-                        <a href="products-pages/${p.slug}.html" class="btn-product" title="شاهد تفاصيل ${p.title}">شاهد المزيد</a>
+                        <a href="products-pages/${p.slug}.html" class="btn-product">شاهد المزيد</a>
                     </div>
                 `;
                 grid.appendChild(card);
