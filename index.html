@@ -82,6 +82,9 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
         }
         .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(107, 29, 63, 0.2); }
         .product-image { width: 100%; height: 200px; object-fit: cover; background: var(--qatar-light); }
@@ -113,121 +116,6 @@
         .btn-whatsapp { background: #25D366; color: white; }
         .btn-whatsapp:hover { background: #1FA855; }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            overflow: auto;
-        }
-        .modal-content {
-            background-color: white;
-            margin: 2% auto;
-            padding: 0;
-            width: 95%;
-            max-width: 1000px;
-            border-radius: 10px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-        }
-        .close-modal {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--qatar-maroon);
-            cursor: pointer;
-            z-index: 1001;
-        }
-        .close-modal:hover { color: #8B2E5F; }
-        .modal-header {
-            background: linear-gradient(135deg, var(--qatar-maroon) 0%, #8B2E5F 100%);
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        .modal-body {
-            padding: 2rem;
-        }
-        .product-hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .product-image-modal { width: 100%; border-radius: 8px; }
-        .product-details h1 { color: var(--qatar-maroon); margin-bottom: 1rem; font-size: 1.8rem; }
-        .price-box {
-            background: #f0f0f0;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-        .original-price-modal { font-size: 0.95rem; color: #999; text-decoration: line-through; }
-        .sale-price-modal { font-size: 2rem; color: var(--qatar-maroon); font-weight: bold; }
-        .discount-modal { background: #FF6B6B; color: white; padding: 0.5rem 1rem; border-radius: 5px; display: inline-block; margin-left: 1rem; }
-        .qty-section { margin: 1rem 0; display: flex; gap: 1rem; align-items: center; }
-        .qty-section label { font-weight: bold; }
-        .qty-section input { width: 80px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px; }
-        .add-to-cart {
-            background: var(--qatar-maroon);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            width: 100%;
-            margin: 1rem 0;
-            font-weight: bold;
-        }
-        .add-to-cart:hover { background: #8B2E5F; }
-        .customer-info {
-            background: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            border-left: 3px solid var(--qatar-maroon);
-        }
-        .customer-info h3 { color: var(--qatar-maroon); margin-bottom: 1rem; }
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; font-weight: bold; margin-bottom: 0.5rem; color: var(--qatar-dark); }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-        .form-group textarea { resize: vertical; min-height: 60px; }
-        .whatsapp-btn-send {
-            background: #25D366;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            width: 100%;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            font-weight: bold;
-        }
-        .whatsapp-btn-send:hover { background: #1FA855; }
-        .specs { background: #f9f9f9; padding: 1.5rem; border-radius: 8px; margin: 1rem 0; }
-        .specs h3 { color: var(--qatar-maroon); margin-bottom: 1rem; }
-        .spec-list { list-style: none; }
-        .spec-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
-        .spec-list li::before { content: "✓ "; color: var(--qatar-maroon); font-weight: bold; }
-
         .footer {
             background: var(--qatar-maroon);
             color: white;
@@ -247,12 +135,10 @@
         .footer-section ul li { margin-bottom: 0.5rem; }
         .footer-section a { color: #ddd; text-decoration: none; }
         .footer-section a:hover { color: var(--qatar-gold); }
-        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem; }
 
         @media (max-width: 768px) {
             .products-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
-            .product-hero { grid-template-columns: 1fr; }
-            .modal-content { width: 100%; margin: 0; border-radius: 0; }
         }
     </style>
 </head>
@@ -319,31 +205,23 @@
         </div>
     </footer>
 
-    <!-- Modal -->
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div class="modal-body" id="modalBody"></div>
-        </div>
-    </div>
-
     <script>
         const products = [
-            {"id": 1, "sku": "A.000855", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatZbgcCNey.jpeg?alt=media&token=a8d781bb-3cab-4f30-be3f-d15adf535c0a", "title": "نظارة القراءة وحماية العين من الاشعة", "price": 249.9, "sale_price": 199.9},
-            {"id": 2, "sku": "A.002232", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatogHffDiV.webp?alt=media&token=f3972ac6-1f02-4bff-958b-b2087d03813a", "title": "جهاز الحجامة الذكي", "price": 255, "sale_price": 205},
-            {"id": 3, "sku": "A.001785", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2Fashyaaterkomipk.jpg?alt=media&token=bc56fcf9-6082-4942-b145-4eec4337cb0c", "title": "مظلة واقية من الشمس للزجاج الأمامي للسيارة", "price": 238, "sale_price": 188},
-            {"id": 4, "sku": "A.001436", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatCZ76KDh6.jpg?alt=media&token=198ae048-c196-4cb5-8b93-25951aca3f16", "title": "قطاعة الخضار اليدوية", "price": 302.2, "sale_price": 252.2},
-            {"id": 5, "sku": "A.000356", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatpThNUiZn.jpg?alt=media&token=db63d41d-37ba-4143-a60e-729171c1340e", "title": "جهاز ازالة الشعر بتكنولوجيا الذبذبات", "price": 273.7, "sale_price": 223.7},
-            {"id": 6, "sku": "A.000218", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatRQoHbGoD.jpg?alt=media&token=243fc879-55f7-4bef-83e7-3ac266bd5ddf", "title": "آلة الخياطة المحمولة", "price": 327.7, "sale_price": 277.7},
-            {"id": 7, "sku": "A.003176", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatFezzopz2.jfif?alt=media&token=5a1513c8-671c-4f07-8d4e-4d897577778e", "title": "جل تبييض الأسنان EELHOE", "price": 238, "sale_price": 188},
-            {"id": 8, "sku": "A.001499", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatmBgYRYpQ.jpeg?alt=media&token=57c59dc6-2588-4212-98c9-e7a5e6c97872", "title": "جهاز مساج القدمين", "price": 281.2, "sale_price": 231.2},
-            {"id": 9, "sku": "A.001501", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatnBu8BG9z.png?alt=media&token=55609873-7836-43d5-83c4-c3e04820f677", "title": "سجادة صلاة تعليمية", "price": 327.7, "sale_price": 277.7},
-            {"id": 10, "sku": "A.001652", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatGVhuW2z5.jpg?alt=media&token=e77ef106-6e4d-46d0-8885-72c36b10dc74", "title": "طابعة صور حرارية صغيرة للهاتف", "price": 327.7, "sale_price": 277.7},
-            {"id": 11, "sku": "A.001228", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatM43d3jZJ.jpg?alt=media&token=3f3733b2-b5b3-47e3-8110-bdc6f0b83b2b", "title": "مشد الظهر والكتف", "price": 281.9, "sale_price": 231.9},
-            {"id": 12, "sku": "A.001982", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatdvMqD0NX.jpg?alt=media&token=eab767b4-fc42-4f33-9bd7-b61e7b1915c2", "title": "مسدس تدليك عضلات الجسم", "price": 327.7, "sale_price": 277.7},
-            {"id": 13, "sku": "A.001851", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatLL0aifnC.jpeg?alt=media&token=fc6aa6b4-c419-4777-a12d-3fa2b1b3843b", "title": "مكواه بخار كهربائية محمولة", "price": 288.7, "sale_price": 238.7},
-            {"id": 14, "sku": "A.003334", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatQSpVTsFx.webp?alt=media&token=36a67bb3-260d-4b2c-87a0-e7a8e097aaf1", "title": "صينية خبز سيليكون للمقلاة الهوائية", "price": 272.9, "sale_price": 222.9},
-            {"id": 15, "sku": "A.000185", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatTdtwUnih.jpg?alt=media&token=cf62af89-b072-4575-a9b7-a1854264da82", "title": "زيت أوميغا لتطويل اللحية وتعبئة الفراغات", "price": 263.2, "sale_price": 213.2}
+            {"id": 1, "slug": "نظارة-القراءة-وحماية-العين-من-الاشعة", "sku": "A.000855", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatZbgcCNey.jpeg?alt=media&token=a8d781bb-3cab-4f30-be3f-d15adf535c0a", "title": "نظارة القراءة وحماية العين من الاشعة", "price": 249.9, "sale_price": 199.9},
+            {"id": 2, "slug": "جهاز-الحجامة-الذكي", "sku": "A.002232", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatogHffDiV.webp?alt=media&token=f3972ac6-1f02-4bff-958b-b2087d03813a", "title": "جهاز الحجامة الذكي", "price": 255, "sale_price": 205},
+            {"id": 3, "slug": "مظلة-واقية-من-الشمس-للزجاج-الأمامي-للسيارة", "sku": "A.001785", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaaterkomipk.jpg?alt=media&token=bc56fcf9-6082-4942-b145-4eec4337cb0c", "title": "مظلة واقية من الشمس للزجاج الأمامي للسيارة", "price": 238, "sale_price": 188},
+            {"id": 4, "slug": "قطاعة-الخضار-اليدوية", "sku": "A.001436", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatCZ76KDh6.jpg?alt=media&token=198ae048-c196-4cb5-8b93-25951aca3f16", "title": "قطاعة الخضار اليدوية", "price": 302.2, "sale_price": 252.2},
+            {"id": 5, "slug": "جهاز-ازالة-الشعر-بتكنولوجيا-الذبذبات", "sku": "A.000356", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatpThNUiZn.jpg?alt=media&token=db63d41d-37ba-4143-a60e-729171c1340e", "title": "جهاز ازالة الشعر بتكنولوجيا الذبذبات", "price": 273.7, "sale_price": 223.7},
+            {"id": 6, "slug": "آلة-الخياطة-المحمولة", "sku": "A.000218", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatRQoHbGoD.jpg?alt=media&token=243fc879-55f7-4bef-83e7-3ac266bd5ddf", "title": "آلة الخياطة المحمولة", "price": 327.7, "sale_price": 277.7},
+            {"id": 7, "slug": "جل-تبييض-الأسنان-EELHOE", "sku": "A.003176", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatFezzopz2.jfif?alt=media&token=5a1513c8-671c-4f07-8d4e-4d897577778e", "title": "جل تبييض الأسنان EELHOE", "price": 238, "sale_price": 188},
+            {"id": 8, "slug": "جهاز-مساج-القدمين", "sku": "A.001499", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatmBgYRYpQ.jpeg?alt=media&token=57c59dc6-2588-4212-98c9-e7a5e6c97872", "title": "جهاز مساج القدمين", "price": 281.2, "sale_price": 231.2},
+            {"id": 9, "slug": "سجادة-صلاة-تعليمية", "sku": "A.001501", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatnBu8BG9z.png?alt=media&token=55609873-7836-43d5-83c4-c3e04820f677", "title": "سجادة صلاة تعليمية", "price": 327.7, "sale_price": 277.7},
+            {"id": 10, "slug": "طابعة-صور-حرارية-صغيرة-للهاتف", "sku": "A.001652", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatGVhuW2z5.jpg?alt=media&token=e77ef106-6e4d-46d0-8885-72c36b10dc74", "title": "طابعة صور حرارية صغيرة للهاتف", "price": 327.7, "sale_price": 277.7},
+            {"id": 11, "slug": "مشد-الظهر-والكتف", "sku": "A.001228", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatM43d3jZJ.jpg?alt=media&token=3f3733b2-b5b3-47e3-8110-bdc6f0b83b2b", "title": "مشد الظهر والكتف", "price": 281.9, "sale_price": 231.9},
+            {"id": 12, "slug": "مسدس-تدليك-عضلات-الجسم", "sku": "A.001982", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatdvMqD0NX.jpg?alt=media&token=eab767b4-fc42-4f33-9bd7-b61e7b1915c2", "title": "مسدس تدليك عضلات الجسم", "price": 327.7, "sale_price": 277.7},
+            {"id": 13, "slug": "مكواه-بخار-كهربائية-محمولة", "sku": "A.001851", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatLL0aifnC.jpeg?alt=media&token=fc6aa6b4-c419-4777-a12d-3fa2b1b3843b", "title": "مكواه بخار كهربائية محمولة", "price": 288.7, "sale_price": 238.7},
+            {"id": 14, "slug": "صينية-خبز-سيليكون-للمقلاة-الهوائية", "sku": "A.003334", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatQSpVTsFx.webp?alt=media&token=36a67bb3-260d-4b2c-87a0-e7a8e097aaf1", "title": "صينية خبز سيليكون للمقلاة الهوائية", "price": 272.9, "sale_price": 222.9},
+            {"id": 15, "slug": "زيت-أوميغا-لتطويل-اللحية-وتعبئة-الفراغات", "sku": "A.000185", "image_link": "https://firebasestorage.googleapis.com/v0/b/ashyaatcrm.appspot.com/o/images%2FashyaatTdtwUnih.jpg?alt=media&token=cf62af89-b072-4575-a9b7-a1854264da82", "title": "زيت أوميغا لتطويل اللحية وتعبئة الفراغات", "price": 263.2, "sale_price": 213.2}
         ];
 
         function renderProducts() {
@@ -352,9 +230,9 @@
             products.forEach(p => {
                 const discount = Math.round(((p.price - p.sale_price) / p.price) * 100);
                 
-                const card = document.createElement('div');
+                const card = document.createElement('a');
+                card.href = `products-pages/${p.slug}.html`;
                 card.className = 'product-card';
-                card.onclick = () => openModal(p.id);
                 card.innerHTML = `
                     <img src="${p.image_link}" alt="${p.title}" class="product-image" 
                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22200%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22250%22 height=%22200%22/%3E%3C/svg%3E'">
@@ -370,8 +248,8 @@
                                 <span class="discount-badge">-${discount}%</span>
                             </div>
                             <div class="product-actions">
-                                <button class="btn-view-more" onclick="event.stopPropagation(); openModal(${p.id})">شاهد المزيد</button>
-                                <button class="btn-whatsapp" onclick="event.stopPropagation(); openWhatsappForm(${p.id})">💬 واتساب</button>
+                                <button class="btn-view-more" onclick="event.preventDefault(); window.location.href='products-pages/${p.slug}.html'">شاهد المزيد</button>
+                                <button class="btn-whatsapp" onclick="event.preventDefault(); sendToWhatsapp('${p.title}', ${p.sale_price}, '${p.sku}')">💬 واتساب</button>
                             </div>
                         </div>
                     </div>
@@ -381,149 +259,13 @@
             });
         }
 
-        function openModal(productId) {
-            const product = products.find(p => p.id === productId);
-            const discount = Math.round(((product.price - product.sale_price) / product.price) * 100);
-
-            document.getElementById('modalBody').innerHTML = `
-                <div class="product-hero">
-                    <div>
-                        <img src="${product.image_link}" alt="${product.title}" class="product-image-modal">
-                    </div>
-                    <div class="product-details">
-                        <h1>${product.title}</h1>
-                        <div style="color: #999; margin: 1rem 0;">SKU: ${product.sku}</div>
-                        
-                        <div class="price-box">
-                            <div class="original-price-modal">السعر الأصلي: ${product.price} QAR</div>
-                            <div class="sale-price-modal">${product.sale_price} QAR<span class="discount-modal">-${discount}%</span></div>
-                        </div>
-
-                        <div class="qty-section">
-                            <label for="qty-${productId}">الكمية:</label>
-                            <input type="number" id="qty-${productId}" value="1" min="1" max="100">
-                        </div>
-
-                        <button class="add-to-cart" onclick="addToCart(${product.id}, '${product.title}', ${product.sale_price})">
-                            🛒 أضف إلى السلة
-                        </button>
-
-                        <button class="whatsapp-btn-send" onclick="openWhatsappForm(${product.id})">
-                            📱 اطلب عبر واتساب
-                        </button>
-                    </div>
-                </div>
-
-                <div class="customer-info">
-                    <h3>📋 بيانات الطلب (لواتساب)</h3>
-                    <div class="form-group">
-                        <label for="name-${productId}">الاسم:</label>
-                        <input type="text" id="name-${productId}" placeholder="أدخل اسمك الكامل">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone-${productId}">رقم الهاتف:</label>
-                        <input type="tel" id="phone-${productId}" placeholder="+974..." value="">
-                    </div>
-                    <div class="form-group">
-                        <label for="address-${productId}">العنوان:</label>
-                        <input type="text" id="address-${productId}" placeholder="الدوحة - ...">
-                    </div>
-                    <div class="form-group">
-                        <label for="qty-input-${productId}">عدد القطع:</label>
-                        <input type="number" id="qty-input-${productId}" value="1" min="1" max="100">
-                    </div>
-                    <div class="form-group">
-                        <label for="notes-${productId}">ملاحظات إضافية (اختياري):</label>
-                        <textarea id="notes-${productId}" placeholder="أي ملاحظات أخرى..."></textarea>
-                    </div>
-                    <button class="whatsapp-btn-send" onclick="sendWhatsappMessage(${product.id})">
-                        ✅ أرسل الطلب الآن
-                    </button>
-                </div>
-
-                <div class="specs">
-                    <h3>📋 مواصفات المنتج</h3>
-                    <ul class="spec-list">
-                        <li>منتج أصلي وموثوق 100%</li>
-                        <li>جودة عالية وفقاً لمعايير السوق العالمية</li>
-                        <li>توصيل سريع وآمن إلى الدوحة</li>
-                        <li>ضمان رضا العميل 100%</li>
-                        <li>دعم عملاء متميز 24/7</li>
-                        <li>سياسة استرجاع ميسرة</li>
-                    </ul>
-                </div>
-            `;
-
-            document.getElementById('productModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('productModal').style.display = 'none';
-        }
-
-        function openWhatsappForm(productId) {
-            const product = products.find(p => p.id === productId);
-            const nameInput = document.getElementById(`name-${productId}`);
-            const phoneInput = document.getElementById(`phone-${productId}`);
-            const addressInput = document.getElementById(`address-${productId}`);
-            const qtyInput = document.getElementById(`qty-input-${productId}`);
-
-            if (nameInput && nameInput.value.trim()) {
-                sendWhatsappMessage(productId);
-            } else {
-                alert('من فضلك أكمل بيانات الطلب أولاً');
-                setTimeout(() => {
-                    if (nameInput) nameInput.focus();
-                }, 100);
-            }
-        }
-
-        function sendWhatsappMessage(productId) {
-            const product = products.find(p => p.id === productId);
-            const name = document.getElementById(`name-${productId}`).value || 'عميل';
-            const phone = document.getElementById(`phone-${productId}`).value || '+974';
-            const address = document.getElementById(`address-${productId}`).value || 'الدوحة';
-            const qty = parseInt(document.getElementById(`qty-input-${productId}`).value) || 1;
-            const notes = document.getElementById(`notes-${productId}`).value || '';
-            const totalPrice = (product.sale_price * qty).toFixed(2);
-
-            const message = `🛍️ *طلب جديد من سوق قطر*
-
-📦 *المنتج:* ${product.title}
-🔖 *SKU:* ${product.sku}
-💰 *السعر الواحد:* ${product.sale_price} QAR
-📊 *الكمية:* ${qty}
-💵 *الإجمالي:* ${totalPrice} QAR
-
-👤 *بيانات العميل:*
-📛 *الاسم:* ${name}
-📱 *الهاتف:* ${phone}
-📍 *العنوان:* ${address}
-${notes ? `📝 *ملاحظات:* ${notes}` : ''}
-
-🔗 *الرابط:* https://sooq-qatar.pages.dev/`;
-
-            const whatsappURL = `https://wa.me/201110760081?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
-        }
-
-        function addToCart(id, title, price) {
-            const qty = parseInt(document.getElementById(`qty-${id}`).value) || 1;
-            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-            cart.push({id, title, price, qty});
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`تم إضافة ${qty} من "${title}" إلى السلة!`);
+        function sendToWhatsapp(title, price, sku) {
+            const msg = `مهتم بـ: ${title}\nالسعر: ${price} QAR\nSKU: ${sku}`;
+            window.open(`https://wa.me/201110760081?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         function goToCart() {
             window.location.href = 'cart.html';
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('productModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
         }
 
         renderProducts();
